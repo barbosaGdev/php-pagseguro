@@ -5,16 +5,16 @@
 require dirname(__FILE__)."/../_autoload.class.php";
 use CWG\PagSeguro\PagSeguroAssinaturas;
 
-$email = "carloswgama@gmail.com";
-$token = "33D43C3F884E4EB687C2C62BB92ECD6A";
+$email = "barbosagdev@gmail.com";
+$token = "E0C36822391B4A548918B0B346FB5E17";
 $sandbox = true;
 
 $pagseguro = new PagSeguroAssinaturas($email, $token, $sandbox);
 
 //Nome do comprador igual a como esta no CARTÂO
-$pagseguro->setNomeCliente("CARLOS W GAMA");
+$pagseguro->setNomeCliente("GABRIEL BARBOSA DAVID");
 //Email do comprovador
-$pagseguro->setEmailCliente("c73062863531198591643@sandbox.pagseguro.com.br");
+$pagseguro->setEmailCliente("c45014486012121325466@sandbox.pagseguro.com.br");
 //Informa o telefone DD e número
 $pagseguro->setTelefone('11', '999999999');
 //Informa o CPF

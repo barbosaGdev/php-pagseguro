@@ -5,8 +5,8 @@
 require dirname(__FILE__)."/../_autoload.class.php";
 use CWG\PagSeguro\PagSeguroAssinaturas;
 
-$email = "carloswgama@gmail.com";
-$token = "33D43C3F884E4EB687C2C62BB92ECD6A";
+$email = "barbosagdev@gmail.com";
+$token = "E0C36822391B4A548918B0B346FB5E17";
 $sandbox = true;
 
 $pagseguro = new PagSeguroAssinaturas($email, $token, $sandbox);
@@ -15,6 +15,8 @@ $pagseguro = new PagSeguroAssinaturas($email, $token, $sandbox);
 $js = $pagseguro->preparaCheckoutTransparente(true);
 echo $js['completo'];
 ?>
+
+
 
 <h2> Campos Obrigatórios </h2>
 <p>Número do Cartão</p>
@@ -29,9 +31,11 @@ echo $js['completo'];
 <p>Ano de Expiração do Cartão</p>
 <input type="text" id="pagseguro_cartao_ano" value="2030"/>
 
-<br/>
+<br>
 
 <button id="botao_comprar">Comprar</button>
+
+
 
 <script type="text/javascript">
 
@@ -48,13 +52,14 @@ echo $js['completo'];
     function enviarPedido() {
         alert($('#pagseguro_cliente_hash').val())
         alert($('#pagseguro_cartao_token').val())
+       
         
         var data = {
             hash:  $('#pagseguro_cliente_hash').val(),
             token: $('#pagseguro_cartao_token').val()
         };
         
-        $.post('http://localhost/pagseguro/examples/assinatura/assinando2.php', data, function(response) {
+        $.post('http://localhost:8000/examples/assinatura/assinando2.php', data, function(response) {
             alert(response);
         });
     }
