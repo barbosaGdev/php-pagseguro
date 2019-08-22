@@ -12,20 +12,20 @@ $sandbox = true;
 $pagseguro = new PagSeguroAssinaturas($email, $token, $sandbox);
 
 //Cria um nome para o plano
-$pagseguro->setReferencia('Assinatura de Streaming');
+$pagseguro->setReferencia('Assinatura de Revista');
 
 //Cria uma descrição para o plano
-$pagseguro->setDescricao('Libera o acesso ao portal por 3 meses. A assinatura voltará a ser cobrada a cada 3 meses.');
+$pagseguro->setDescricao('Serviço de entrega de revista');
 
 //Valor a ser cobrado a cada renovação
-$pagseguro->setValor(20.00);
+$pagseguro->setValor(15.00);
 
 //De quanto em quanto tempo será realizado uma nova cobrança (MENSAL, BIMESTRAL, TRIMESTRAL, SEMESTRAL, ANUAL)
 $pagseguro->setPeriodicidade(PagSeguroAssinaturas::MENSAL);
 
 //=== Campos Opcionais ===//
 //Após quanto tempo a assinatura irá expirar após a contratação = valor inteiro + (DAYS||MONTHS||YEARS). Exemplo, após 5 anos
-$pagseguro->setExpiracao('');
+$pagseguro->setExpiracao(5,'YEARS');
 
 //URL para redicionar a pessoa do portal PagSeguro para uma página de cancelamento no portal
 $pagseguro->setURLCancelamento('');

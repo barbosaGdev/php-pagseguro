@@ -14,7 +14,7 @@ $pagseguro = new PagSeguroAssinaturas($email, $token, $sandbox);
 //Sete apenas TRUE caso queira importa o Jquery também. Caso já possua, não precisa
 $js = $pagseguro->preparaCheckoutTransparente(true);
 echo $js['completo'];
-?>
+?> 
 
 
 

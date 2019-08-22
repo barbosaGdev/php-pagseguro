@@ -30,7 +30,7 @@ $pagseguro->setTokenCartao($_POST['token']);
 //Código usado pelo vendedor para identificar qual é a compra
 $pagseguro->setReferencia("CWG004");
 //Plano usado (Esse código é criado durante a criação do plano)
-$pagseguro->setPlanoCode('E488FBA13434E41114179FB619875F62');
+$pagseguro->setPlanoCode('5D0A6B4254543E6BB4B56FBE07E21220');
 //No ambiente de testes funciona normalmente sem o IP, no ambiente "real", mesmo na documentação falando que é opcional, precisei passar o IP ($_SERVER['HTTP_CLIENT_IP'];) do cliente para finalizar corretamente a assinatura
 // https://comunidade.pagseguro.uol.com.br/hc/pt-br/community/posts/360001810594-Pagamento-Recorrente-Cancelado- (o erro e a solução encontrada)
 $pagseguro->setIPCliente('127.0.0.1');
