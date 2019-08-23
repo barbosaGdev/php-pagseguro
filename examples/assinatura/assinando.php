@@ -19,17 +19,57 @@ echo $js['completo'];
 
 
 <h2> Campos Obrigatórios </h2>
+
+<p>Nome do Cliente</p>
+<input type="text" id="nome_cliente" />
+
+<p>Data de Nascimento</p>
+<input type="text" id="data_nasc" />
+
+<p>CPF</p>
+<input type="text" id="cpf" />
+
+<p>E-mail do Cliente</p>
+<input type="text" id="email_cliente" />
+
+<p>DDD</p>
+<input type="text" id="ddd" />
+
+<p>Telefone</p>
+<input type="text" id="telefone" />
+
+<p>Endereço</p>
+<input type="text" id="endereco" />
+
+<p>Número</p>
+<input type="text" id="numero" />
+
+<p>Bairro</p>
+<input type="text" id="bairro" />
+
+<p>Complemento</p>
+<input type="text" id="complemento" />
+
+<p>Cidade</p>
+<input type="text" id="cidade" />
+
+<p>Unidade Federativa</p>
+<input type="text" id="estado" />
+
+<p>CEP</p>
+<input type="text" id="cep" />
+
 <p>Número do Cartão</p>
-<input type="text" id="pagseguro_cartao_numero" value="4111111111111111"/>
+<input type="text" id="pagseguro_cartao_numero" />
 
 <p>CVV do cartão</p>
-<input type="text" id="pagseguro_cartao_cvv" value="123"/>
+<input type="text" id="pagseguro_cartao_cvv"  />
 
 <p>Mês de expiração do Cartao</p>
-<input type="text" id="pagseguro_cartao_mes" value="12"/>
+<input type="text" id="pagseguro_cartao_mes"  />
 
 <p>Ano de Expiração do Cartão</p>
-<input type="text" id="pagseguro_cartao_ano" value="2030"/>
+<input type="text" id="pagseguro_cartao_ano" />
 
 <br>
 
@@ -37,10 +77,28 @@ echo $js['completo'];
 
 
 
+
+
 <script type="text/javascript">
+
+    function recebeCartao() {
+        var cartao = {
+        
+        numero_cartao: $('#pagseguro_cartao_numero').val(),
+        cvv_cartao: $('#pagseguro_cartao_cvv').val(),
+        mes_cartao: $('#pagseguro_cartao_mes').val(),
+        ano_cartao: $('#pagseguro_cartao_ano').val(),
+
+        
+    }
+
+  
+    }
+
 
     //Gera os conteúdos necessários
     $('#botao_comprar').click(function() {
+        recebeCartao(); //Guarda as informações do cartão para gerar o token
         PagSeguroBuscaHashCliente(); //Cria o Hash identificador do Cliente usado na transição
         PagSeguroBuscaBandeira();   //Através do pagseguro_cartao_numero do cartão busca a bandeira
         PagSeguroBuscaToken();      //Através dos 4 campos acima gera o Token do cartão  
@@ -56,11 +114,27 @@ echo $js['completo'];
         
         var data = {
             hash:  $('#pagseguro_cliente_hash').val(),
-            token: $('#pagseguro_cartao_token').val()
+            token: $('#pagseguro_cartao_token').val(),
+            nome_cliente: $('#nome_cliente').val(),
+            email_cliente: $('#email_cliente').val(),
+            ddd: $('#ddd').val(),
+            telefone: $('#telefone').val(),
+            endereco: $('#endereco').val(),
+            data_nasc: $('#data_nasc').val(),
+            cpf: $('#cpf').val(),
+            numero: $('#numero').val(),
+            bairro: $('#bairro').val(),
+            cidade: $('#cidade').val(),
+            complemento: $('#complemento').val(),
+            estado: $('#estado').val(),
+            cep: $('#cep').val(),
         };
         
         $.post('http://localhost:8000/examples/assinatura/assinando2.php', data, function(response) {
             alert(response);
         });
     }
+
+    
+
 </script>
