@@ -5,6 +5,8 @@
 require dirname(__FILE__)."/../_autoload.class.php";
 use CWG\PagSeguro\PagSeguroAssinaturas;
 
+
+
 $email = "barbosagdev@gmail.com";
 $token = "E0C36822391B4A548918B0B346FB5E17";
 $sandbox = true;
@@ -81,6 +83,22 @@ echo $js['completo'];
 
 <script type="text/javascript">
 
+    // const mysql      = require('mysql');
+    // const connection = mysql.createConnection({
+    // host     : 'localhost',
+    // port     : 8000,
+    // user     : 'root',
+    // password : '',
+    // database : 'wp_portinari'
+    // });
+    
+    // connection.connect(function(err){
+    // if(err) return console.log(err);
+    // console.log('conectou!');
+    // createTable(connection);
+    // });
+
+
     function recebeCartao() {
         var cartao = {
         
@@ -129,11 +147,27 @@ echo $js['completo'];
             estado: $('#estado').val(),
             cep: $('#cep').val(),
         };
+
         
         $.post('http://localhost:8000/examples/assinatura/assinando2.php', data, function(response) {
             alert(response);
         });
     }
+
+    // function addRows(conn){
+    // const sql = "INSERT INTO wp_signature (nome_cliente, email_cliente, ddd, telefone, endereco, data_nasc, cpf, numero, bairro, cidade, complemento, estado, cep) VALUES ?";
+
+    // const values = [
+    //         [$('#nome_cliente').val(), $('#email_cliente').val(), $('#ddd').val(), $('#telefone').val(), $('#endereco').val(), $('#data_nasc').val(), $('#cpf').val(), $('#numero').val(), $('#bairro').val(), $('#cidade').val(), $('#complemento').val(), $('#estado').val(), $('#cep').val()],
+    //     ];
+        
+    // conn.query(sql, [values], function (error, results, fields){
+    //         if(error) return console.log(error);
+    //         alert('Adicionou registros!');
+    //         conn.end();//fecha a conexão
+    //     });
+    // }
+
 
     
 
